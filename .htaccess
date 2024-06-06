@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^$ simpeg.php?url=home [L]
+RewriteRule ^index\.html$ simpeg.php?url=home [L]
+RewriteRule ^logout\.html$ logout.php [L]
+RewriteRule ^(.*)\.html$ simpeg.php?url=$1 [L]
+
+ErrorDocument 404 "<h1>Invalid URL</h1>"
+
+Options All -Indexes
+</IfModule>

@@ -1,0 +1,4 @@
+<?php
+unset($_SESSION[LOGIN_MODE]);
+unset($_SESSION[LOGIN_TOKEN]);
+unset($_SESSION[LOGIN_TYPE]);
