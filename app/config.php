@@ -17,10 +17,10 @@
 // // Site Name
 // define("SITENAME", "IAIN Madura");
 
-$db_host = "localhost";
-$db_user = "root";
-$db_pass = "1@indb";
-$db_host = "103.162.55.10";
+// $db_host = "localhost";
+// $db_user = "root";
+// $db_pass = "1@indb";
+// $db_host = "103.162.55.10";
 $db_host = "192.168.10.70";
 $db_host1 = "192.168.10.69";
 $db_user = "iainmdr";

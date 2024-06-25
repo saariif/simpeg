@@ -102,110 +102,110 @@ function Delete_record(){
 }
 // INSERT RECORD
 function Insert_record(){
-    $("#btn-save").click(function(){
-        var id = $("#id").val();
-        var jenjang = $("#jenjang").val();
-        var no_ijazah = $("#no_ijazah").val();
-        var lembaga = $("#lembaga").val();
-        var lulus = $("#lulus").val();
-        var status = $("#status").val();
-        var jurusan = $("#jurusan").val();
-        var akreditasi = $("#akreditasi").val();
-        var alamat = $("#alamat").val();
-        var proses = $("#btn-save").attr('data-id');
-        $('#jenjang').removeClass('is-invalid');
-        $('#no_ijazah').removeClass('is-invalid');
-        $('#lembaga').removeClass('is-invalid');
-        $('#lulus').removeClass('is-invalid');
-        $('#status').removeClass('is-invalid');
-        $('#jurusan').removeClass('is-invalid');
-        $('#akreditasi').removeClass('is-invalid');
-        $('#alamat').removeClass('is-invalid');
-        // alert("haloo"+jenjang);
-        if(jenjang==''){
-            $('#jenjang_m').html('Wajib diisi!');
-            $('#jenjang').addClass('is-invalid');
-            $('#jenjang').focus();
-        }
-        if(no_ijazah==''){
-            $('#no_ijazah_m').html('Wajib diisi!');
-            $('#no_ijazah').addClass('is-invalid');
-            $('#no_ijazah').focus();
-        }
-        if(lembaga==''){
-            $('#lembaga_m').html('Wajib diisi!');
-            $('#lembaga').addClass('is-invalid');
-            $('#lembaga').focus();
-        }
-        if(lulus==''){
-            $('#lulus_m').html('Wajib diisi!');
-            $('#lulus').addClass('is-invalid');
-            $('#lulus').focus();
-        }
-        if(status==''){
-            $('#status_m').html('Wajib diisi!');
-            $('#status').addClass('is-invalid');
-            $('#status').focus();
-        }
-        if(jurusan==''){
-            $('#jurusan_m').html('Wajib diisi!');
-            $('#jurusan').addClass('is-invalid');
-            $('#jurusan').focus();
-        }
-        if(akreditasi==''){
-            $('#akreditasi_m').html('Wajib diisi!');
-            $('#akreditasi').addClass('is-invalid');
-            $('#akreditasi').focus();
-        }
-        if(alamat==''){
-            $('#alamat_m').html('Wajib diisi!');
-            $('#alamat').addClass('is-invalid');
-            $('#alamat').focus();
-        }
-        if(jenjang!='' && no_ijazah!=''&& lembaga!='' && lulus!='' && status!='' && jurusan!='' && akreditasi!='' && alamat!=''){
-            $.ajax(
-                {
-                    url: 'modul/pendidikan_proses.php',
-                    method: 'post',
-                    data:{
-                        aksi : 'insert',
-                        id:id,
-                        proses:proses,
-                        jenjang:jenjang,
-                        no_ijazah:no_ijazah, 
-                        lembaga:lembaga, 
-                        lulus:lulus,
-                        status:status,
-                        jurusan:jurusan,
-                        akreditasi:akreditasi,
-                        alamat:alamat
-                    },
-                    success: function(data){
-                        toastSave = document.querySelector('.toast-placement-ex');
-                        data=$.parseJSON(data);
-                        if(data.status=='success')
-                        {
-                            $('#pendidikanModal').modal('hide');
-                            toastSave.classList.add('bg-success');
-                            toastSave.classList.add('top-0', 'end-0');
-                            $('#notif').html('Berhasil');
-                            toastInserty = new bootstrap.Toast(toastSave);
-                            toastInserty.show();
-                            View_record();
-                        }else{
-                            // $('#status').html(data.status);
-                            toastSave.classList.add('bg-danger');
-                            toastSave.classList.add('top-0', 'end-0');
-                            $('#notif').html('Gagal');
-                            toastInsertN = new bootstrap.Toast(toastSave);
-                            toastInsertN.show();
-                            View_record();
-                        }
-                    }
-                }
-            )
-        }
-    });
+    // $("#btn-save").click(function(){
+    //     var id = $("#id").val();
+    //     var jenjang = $("#jenjang").val();
+    //     var no_ijazah = $("#no_ijazah").val();
+    //     var lembaga = $("#lembaga").val();
+    //     var lulus = $("#lulus").val();
+    //     var status = $("#status").val();
+    //     var jurusan = $("#jurusan").val();
+    //     var akreditasi = $("#akreditasi").val();
+    //     var alamat = $("#alamat").val();
+    //     var proses = $("#btn-save").attr('data-id');
+    //     $('#jenjang').removeClass('is-invalid');
+    //     $('#no_ijazah').removeClass('is-invalid');
+    //     $('#lembaga').removeClass('is-invalid');
+    //     $('#lulus').removeClass('is-invalid');
+    //     $('#status').removeClass('is-invalid');
+    //     $('#jurusan').removeClass('is-invalid');
+    //     $('#akreditasi').removeClass('is-invalid');
+    //     $('#alamat').removeClass('is-invalid');
+    //     // alert("haloo"+jenjang);
+    //     if(jenjang==''){
+    //         $('#jenjang_m').html('Wajib diisi!');
+    //         $('#jenjang').addClass('is-invalid');
+    //         $('#jenjang').focus();
+    //     }
+    //     if(no_ijazah==''){
+    //         $('#no_ijazah_m').html('Wajib diisi!');
+    //         $('#no_ijazah').addClass('is-invalid');
+    //         $('#no_ijazah').focus();
+    //     }
+    //     if(lembaga==''){
+    //         $('#lembaga_m').html('Wajib diisi!');
+    //         $('#lembaga').addClass('is-invalid');
+    //         $('#lembaga').focus();
+    //     }
+    //     if(lulus==''){
+    //         $('#lulus_m').html('Wajib diisi!');
+    //         $('#lulus').addClass('is-invalid');
+    //         $('#lulus').focus();
+    //     }
+    //     if(status==''){
+    //         $('#status_m').html('Wajib diisi!');
+    //         $('#status').addClass('is-invalid');
+    //         $('#status').focus();
+    //     }
+    //     if(jurusan==''){
+    //         $('#jurusan_m').html('Wajib diisi!');
+    //         $('#jurusan').addClass('is-invalid');
+    //         $('#jurusan').focus();
+    //     }
+    //     if(akreditasi==''){
+    //         $('#akreditasi_m').html('Wajib diisi!');
+    //         $('#akreditasi').addClass('is-invalid');
+    //         $('#akreditasi').focus();
+    //     }
+    //     if(alamat==''){
+    //         $('#alamat_m').html('Wajib diisi!');
+    //         $('#alamat').addClass('is-invalid');
+    //         $('#alamat').focus();
+    //     }
+    //     if(jenjang!='' && no_ijazah!=''&& lembaga!='' && lulus!='' && status!='' && jurusan!='' && akreditasi!='' && alamat!=''){
+    //         $.ajax(
+    //             {
+    //                 url: 'modul/pendidikan_proses.php',
+    //                 method: 'post',
+    //                 data:{
+    //                     aksi : 'insert',
+    //                     id:id,
+    //                     proses:proses,
+    //                     jenjang:jenjang,
+    //                     no_ijazah:no_ijazah, 
+    //                     lembaga:lembaga, 
+    //                     lulus:lulus,
+    //                     status:status,
+    //                     jurusan:jurusan,
+    //                     akreditasi:akreditasi,
+    //                     alamat:alamat
+    //                 },
+    //                 success: function(data){
+    //                     toastSave = document.querySelector('.toast-placement-ex');
+    //                     data=$.parseJSON(data);
+    //                     if(data.status=='success')
+    //                     {
+    //                         $('#pendidikanModal').modal('hide');
+    //                         toastSave.classList.add('bg-success');
+    //                         toastSave.classList.add('top-0', 'end-0');
+    //                         $('#notif').html('Berhasil');
+    //                         toastInserty = new bootstrap.Toast(toastSave);
+    //                         toastInserty.show();
+    //                         View_record();
+    //                     }else{
+    //                         // $('#status').html(data.status);
+    //                         toastSave.classList.add('bg-danger');
+    //                         toastSave.classList.add('top-0', 'end-0');
+    //                         $('#notif').html('Gagal');
+    //                         toastInsertN = new bootstrap.Toast(toastSave);
+    //                         toastInsertN.show();
+    //                         View_record();
+    //                     }
+    //                 }
+    //             }
+    //         )
+    //     }
+    // });
 
     $("#btn-close").click(function(){
         $("form").trigger('reset');

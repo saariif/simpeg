@@ -35,7 +35,7 @@
     <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <!-- <div class="alert alert-primary" role="alert" id='status'></div> -->
-        <form class="form">
+        <form class="form" id="myForm" enctype="multipart/form-data">
             <input type="hidden" id="id" />
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel3"><span id="aksi"></span> Pendidikan</h5>
@@ -47,8 +47,8 @@
             </div>
             <div class="modal-body">
             <div class="row g-2 mb-2">
-                <div class="col mb-0">
-                    <label for="jenjang" class="form-label">Tingkat <font color="red">*</font></label>
+                <div class="formGroup col mb-0">
+                    <label for="jenjang" class="form-label">Tingkat</label>
                     <select name="jenjang" id="jenjang" class="form-select" required>
                             <option value="">-- Pilih salah satu --</option>
                             <?php
@@ -60,29 +60,29 @@
                               }
                             ?>
                         </select>
-                    <div id="jenjang_m" class="invalid-feedback"></div>
+                    <div id="error" class="invalid-feedback"></div>
                 </div>
-                <div class="col mb-0">
-                <label for="no_ijazah" class="form-label">No Ijazah <font color="red">*</font></label>
+                <div class="formGroup col mb-0">
+                <label for="no_ijazah" class="form-label">No Ijazah</label>
                 <input type="text" placeholder="No Ijazah" id="no_ijazah" class="form-control" required/>
-                <div id="no_ijazah_m" class="invalid-feedback"></div>
+                <div id="error" class="invalid-feedback"></div>
                 </div>
             </div>
             <div class="row g-2 mb-2">
-                <div class="col mb-0">
-                    <label for="lembaga" class="form-label">Nama Sekolah <font color="red">*</font></label>
+                <div class="formGroup col mb-0">
+                    <label for="lembaga" class="form-label">Nama Sekolah</label>
                     <input type="text" id="lembaga" placeholder="Nama Sekolah/Universitas" class="form-control" required/>
-                    <div id="lembaga_m" class="invalid-feedback"></div>
+                    <div id="error" class="invalid-feedback"></div>
                 </div>
-                <div class="col mb-0">
-                    <label for="lulus" class="form-label">Tahun Lulus <font color="red">*</font></label>
+                <div class="formGroup col mb-0">
+                    <label for="lulus" class="form-label">Tahun Lulus</label>
                     <input type="text" id="lulus" placeholder="Tahun Lulus" class="form-control" required/>
-                    <div id="lulus_m" class="invalid-feedback"></div>
+                    <div id="error" class="invalid-feedback"></div>
                 </div>
             </div>
             <div class="row g-2 mb-2">
-                <div class="col mb-0">
-                <label for="status" class="form-label">Status Sekolah <font color="red">*</font></label>
+                <div class="formGroup col mb-0">
+                <label for="status" class="form-label">Status Sekolah</label>
                 <select name="status" id="status" class="form-select" required>
                     <option value=''>-- Pilih salah satu --</option>
                     <?php
@@ -94,17 +94,17 @@
                         }
                     ?>
                 </select>
-                <div id="status_m" class="invalid-feedback"></div>
+                <div id="error" class="invalid-feedback"></div>
                 </div>
-                <div class="col mb-0">
-                    <label for="jurusan" class="form-label">Jurusan Sekolah <font color="red">*</font></label>
+                <div class="formGroup col mb-0">
+                    <label for="jurusan" class="form-label">Jurusan Sekolah</label>
                     <input type="text" id="jurusan" placeholder="Jurusan Sekolah" class="form-control" required/>
-                    <div id="jurusan_m" class="invalid-feedback"></div>
+                    <div id="error" class="invalid-feedback"></div>
                 </div>
             </div>
             <div class="row g-2 mb-2">
-                <div class="col mb-0">
-                <label for="akreditasi" class="form-label">Akreditasi <font color="red">*</font></label>
+                <div class="formGroup col mb-0">
+                <label for="akreditasi" class="form-label">Akreditasi</label>
                 <select name="akreditasi" id="akreditasi" class="form-select" required>
                     <option value=''>-- Pilih salah satu --</option>
                     <?php
@@ -116,21 +116,21 @@
                         }
                     ?>
                 </select>
-                <div id="akreditasi_m" class="invalid-feedback"></div>
+                <div id="error" class="invalid-feedback"></div>
                 </div>
-                <div class="col mb-0">
-                    <label for="alamat" class="form-label">alamat <font color="red">*</font></label>
+                <div class="formGroup col mb-0">
+                    <label for="alamat" class="form-label">Alamat</label>
                     <textarea name="alamat" id="alamat" row="3" class="form-control" required></textarea>
-                    <div id="alamat_m" class="invalid-feedback"></div>
+                    <div id="error" class="invalid-feedback"></div>
                 </div>
             </div>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" id="btn-close" data-bs-dismiss="modal">
+                    Close
+                </button>
+            <button  type="submit" class="btn btn-primary" id="btn-save">Save</button>
         </form>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" id="btn-close" data-bs-dismiss="modal">
-            Close
-        </button>
-        <button type="button" class="btn btn-primary" id="btn-save">Save</button>
         </div>
     </div>
     </div>

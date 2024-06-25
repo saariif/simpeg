@@ -199,5 +199,4 @@
     </div>
     </div>
 </div>
-<script src="modul/checking-form.js"></script>
 <script src="modul/<?=$url[0]?>.js"></script>

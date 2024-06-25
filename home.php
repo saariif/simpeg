@@ -219,9 +219,8 @@ error_reporting(E_ALL & ~E_NOTICE);
       </div>
       <!-- / Layout wrapper -->
     <!-- Core JS -->
+    <script src="modul/checking-form.js"></script>
       <!-- build:js assets/vendor/js/core.js -->
-  
-      
       <script src="assets/vendor/libs/popper/popper.js"></script>
       <script src="assets/vendor/js/bootstrap.js"></script>
       <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
