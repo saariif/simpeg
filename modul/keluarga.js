@@ -54,7 +54,7 @@ function Add_record(){
         $('#tanggung').removeClass('is-invalid');
         $('#fileUpload').removeClass('is-invalid');
         $('#btn-save').attr('data-id', 'add');
-        $('#status').hide()
+        $('#status').hide();
     });
 }
 // VIEW FILE
@@ -87,6 +87,7 @@ function Get_record(){
         var id = $(this).attr('data-id');
         $('#aksi').html('Edit');
         $('#process').val('Edit')
+        $("form").trigger('reset');
         $('#nama').removeClass('is-invalid');
         $('#tempat_lahir').removeClass('is-invalid');
         $('#tanggal_lahir').removeClass('is-invalid');
@@ -106,7 +107,7 @@ function Get_record(){
             dataType:'json',
             success: function(data){
                 $('#status').hide();
-                $('#id').val(data.id);
+                $('#idkeluarga').val(data.id);
                 $('#nama').val(data.nama_keluarga);
                 $('#tempat_lahir').val(data.tempat_lahir);
                 $('#tanggal_lahir').val(data.tanggal_lahir);
@@ -116,19 +117,35 @@ function Get_record(){
                 $('#status_diri').val(data.status_diri);
                 $('#tanggung').val(data.tanggung);
                 $('#keterangan').val(data.keterangan);
+                $('#fileUpload').attr('value', data.file);
                 $('#btn-save').attr('data-id', 'edit');
                 $('#keluargaModal').modal('show');
+
+                if (data.file) {
+                    $('#thumbnail').html(`
+                    <a class="btn btn-primary mt-1" data-bs-toggle="collapse" data-bs-target="#lihatThumbnail" role="button" aria-expanded="false" aria-controls="lihatThumbnail" style="--bs-btn-padding-y: .2rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .65rem;">
+                        Lihat file
+                    </a>
+                    <div class="collapse mt-1" id="lihatThumbnail">
+                        <iframe src="uploads/${data.file}" frameborder="0">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="${data.file}">Download PDF</a>
+                        </iframe>
+                    </div>
+                    `);
+                }
+
             }
         })
     });
 }
+
 // DELETE RECORD 
 function Delete_record(){
     $(document).on("click", "#btn-del", function(){
         var id = $(this).attr('data-id');
         const toastPlacementExample = document.querySelector('.toast-placement-ex');
+        alert(id);
         $('#delModal').modal('show');
-        $(document).on("click", "#btn-delete", function(){
         $.ajax({
             url: 'modul/keluarga_proses.php',
             method: 'post',
@@ -159,17 +176,16 @@ function Delete_record(){
                 }
             }
             });
-        });
     });
 }
-
-
 
 // INSERT RECORD
 const myForm = document.querySelector('form');
 myForm.addEventListener('submit', event => {
     event.preventDefault();
     // validateForm('#myForm');
+    const submitBtn = $(this).find('button[type="submit"]');
+    submitBtn.prop('disabled', true);
     $.ajax(
         {
             url: 'modul/keluarga_proses_2.php',
@@ -179,26 +195,27 @@ myForm.addEventListener('submit', event => {
             processData:false,
             success: function(response){
                 data=$.parseJSON(response);
-                // alert(data.status);
-                toastSave = document.querySelector('.toast-placement-ex');
-                if(data.status === "success"){
-                    $('#keluargaModal').modal('hide');
-                    toastSave.classList.add('bg-success');
-                    toastSave.classList.add('top-0', 'end-0');
-                    $('#notif').html('Berhasil');
-                    toastInserty = new bootstrap.Toast(toastSave);
-                    toastInserty.show();
-                    View_record();
-                }
-                else{
-                toastSave.classList.add('bg-danger');
-                toastSave.classList.add('top-0', 'end-0');
-                $('#notif').html('Gagal');
-                $('#notif2').html(data.response);
-                toastInsertN = new bootstrap.Toast(toastSave);
-                toastInsertN.show();
-                View_record();                   
-                }
+                console.log(data);
+                // toastSave = document.querySelector('.toast-placement-ex');
+                // if(data.status === "success"){
+                //     $('#keluargaModal').modal('hide');
+                //     toastSave.classList.add('bg-success');
+                //     toastSave.classList.add('top-0', 'end-0');
+                //     $('#notif').html('Berhasil');
+                //     toastInserty = new bootstrap.Toast(toastSave);
+                //     toastInserty.show();
+                //     View_record();
+                // }
+                // else{
+                // toastSave.classList.add('bg-danger');
+                // toastSave.classList.add('top-0', 'end-0');
+                // $('#notif').html('Gagal');
+                // $('#notif2').html(data.response);
+                // toastInsertN = new bootstrap.Toast(toastSave);
+                // toastInsertN.show();
+                // View_record();   
+                // }
+                // submitBtn.prop('disabled', false);
             }
         }
     )

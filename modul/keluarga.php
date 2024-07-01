@@ -47,7 +47,7 @@
     <div class="modal-content">
         <!-- <div class="alert alert-primary" role="alert" id='status'></div> -->
         <form class="form" id="myForm" enctype="multipart/form-data">
-            <input type="hidden" id="id" />
+            <input type="hidden" id="idkeluarga" name="idkeluarga" />
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel3"><span id="aksi"></span> Keluarga</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -163,6 +163,7 @@
                     <input required type="file" name="fileUpload" id="fileUpload" class="form-control" onchange="readURL(this,1)" accept="application/pdf"/>
                     <div id="error" class="invalid-feedback"></div>
                 </div>
+                <span id="thumbnail"></span>
             </div>
             </div>
             <div class="modal-footer">
